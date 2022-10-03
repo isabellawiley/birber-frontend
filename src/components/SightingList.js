@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import AddSighting from "./AddSighting";
 import SightingCard from "./SightingCard";
 
-function SightingList( { activeBirder }){
+function SightingList( { activeBirder, currentUser }){
     const [sightings, setSightings] = useState([]);
 
     useEffect(() => {
@@ -15,9 +15,14 @@ function SightingList( { activeBirder }){
         <SightingCard key={sighting.id} sighting={sighting}/>
         )
 
+    function handleNewSighting(newSighting) {
+        const updatedSightings = [...sightings, newSighting];
+        setSightings(updatedSightings);
+    }
+
     return(
         <div>
-            <AddSighting/>
+            <AddSighting onAddSighting = {handleNewSighting} currentUser={currentUser}/>
             {sightingCards}
         </div>
     );

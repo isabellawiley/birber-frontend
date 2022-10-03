@@ -20,7 +20,7 @@ function App() {
     <div className="App">
         <Login onLogin={handleLogin} />
         <Header />
-        <Home />
+        <Home currentUser = {user} />
     </div>
     );
 }
